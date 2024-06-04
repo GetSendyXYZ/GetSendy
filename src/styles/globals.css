@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sendy: 220.9 39.3% 11%;
+    --sendy-foreground: 79, 100%, 4%;
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --mutedOpacity: 220, 14.3%, 95.9%;
+    --muted: 220 14.3% 95.9%;
+    --sendyOpacity: 79, 91%, 50%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --radius: 0.5rem;
+    --logoColor: 220.9 39.3% 11%;
+  }
+
+  .dark {
+    --sendy: 79, 91%, 50%;
+    --sendy-foreground: 0, 100%, 10%;
+    --sendy-text: 79, 100%, 4%;
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --mutedOpacity: 215, 27.9%, 16.9%;
+    --sendyOpacity: 79, 91%, 50%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+    --logoColor: 220.9 39.3% 11%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+
+  }
+
+}
+
+.scroll-bar-gutter::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-bar-gutter {
+  /* scrollbar-gutter: stable; */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.step {
+  position: relative;
+  border-left: 1px solid hsl(var(--sendy));
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 16px;
+
+  pointer-events: none;
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.step.active {
+  opacity: 1;
+  pointer-events: all;
+  cursor: auto
+}
+
+.step::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-100%);
+  height: 1px;
+  width: 64px;
+  background: hsl(var(--sendy));
+}
+
+.step::before {
+  content: attr(data-step);
+  position: absolute;
+  left: -64px;
+  transform: translate(-100%, -50%);
+  top: 50%;
+  padding: 8px;
+  border-radius: 100px;
+  width: 48px;
+  height: 48px;
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  border: 1px solid hsl(var(--sendy));
+  background: hsl(var(--background));
+  color: hsl(var(--sendy));
+  text-align: center;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+@media screen and (max-width: 968px) {
+
+  .step {
+    position: relative;
+    border-left: none;
+    /* border-top: 1px solid hsl(var(--sendy)); */
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 16px;
+
+    pointer-events: none;
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+
+  .step>div.inner {
+    position: relative;
+    margin-top: -16px;
+    padding-top: 16px;
+    border-top: 1px solid hsl(var(--sendy));
+  }
+
+
+  .step::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateY(calc(100% + 28px)) translateX(-50%);
+    height: 24px;
+    width: 1px;
+    background: hsl(var(--sendy));
+  }
+
+  .step::before {
+    position: relative;
+    left: 50%;
+    top: 0;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    transform: translate(-50%, -50%);
+
+  }
+}
+
+.tx-processing button.absolute {
+  display: none !important
+}
