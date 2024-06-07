@@ -7,10 +7,7 @@ export function Loader({
   classes,
 }: PropsWithChildren & { classes?: string }) {
   return (
-    <div
-      className={cn('items-center justify-center bg-background', classes)}
-      style={{ background: 'rgb(3, 7, 18)' }}
-    >
+    <div className={cn('items-center justify-center bg-background', classes)}>
       <div className="grid py-8 px-4 lg:py-12 lg:px-6 xl:py-16 xl:px-8 h-full w-full justify-center items-center">
         <div className="text-sendyOpacity flex flex-col items-center gap-3">
           {children}
