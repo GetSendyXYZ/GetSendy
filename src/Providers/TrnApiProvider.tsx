@@ -17,7 +17,6 @@ import '@therootnetwork/api-types';
 import { useNetworkSelector } from './NetworkSelectorProvider';
 import { Loader } from '@/components/Loader';
 import type { ApiProps } from '@/types';
-import { useFutureverse } from '@futureverse/react';
 
 const ApiContext: React.Context<ApiProps> = createContext(
   {} as unknown as ApiProps

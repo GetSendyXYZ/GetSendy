@@ -10,7 +10,10 @@ const ROOT_RPC =
     ? 'https://root.rootnet.live/archive'
     : 'https://porcini.rootnet.app/archive';
 
-const provider = new providers.JsonRpcProvider(ROOT_RPC, networks.root);
+const provider = new providers.JsonRpcProvider(
+  ROOT_RPC,
+  env.NEXT_PUBLIC_NETWORK === 'root' ? networks.root : networks.porcini
+);
 const nameWrapper = '0x44640d662a423d738d5ebf8b51e57afc0f2cf4df';
 const network = 'mainnet';
 
