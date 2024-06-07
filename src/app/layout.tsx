@@ -87,7 +87,7 @@ export default function RootLayout({
           >
             <div className="font-geistSans w-full mx-auto p-0 min-h-[calc(100vh-90px)] lg:min-h-[calc(100vh-45px)]  relative z-20 mb-[90px] lg:mb-[45px] bg-background">
               <Header />
-              <div className="p-4 lg:pt-0 xl:pt-0 2xl:p-0 ">{children}</div>
+              <div className="p-4 xl:p-0 ">{children}</div>
             </div>
             <Footer />
             <Toaster />
