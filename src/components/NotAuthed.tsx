@@ -18,7 +18,7 @@ export default function NotAuthed() {
           {accountStatus === 'disconnected' && (
             <Button
               className="dark:bg-sendyOpacity hover:bg-opacity-40 dark:hover:bg-opacity-40 transition-all duration-300 uppercase text-xs tracking-wider"
-              onClick={() => open()}
+              onClick={() => handleLogin()}
             >
               Connect Wallet
             </Button>

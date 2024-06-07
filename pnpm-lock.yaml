@@ -27,8 +27,8 @@ dependencies:
     specifier: ^0.9.0
     version: 0.9.0(@polkadot/api@10.11.1)(@tanstack/react-query@4.36.1)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(typescript@5.4.5)(zod@3.22.5)
   '@futureverse/react':
-    specifier: ^1.1.7
-    version: 1.1.7(@coinbase/wallet-sdk@3.9.3)(@emotion/react@11.10.8)(@futureverse/component-library@0.2.3)(@futureverse/experience-sdk@1.0.4)(@futureverse/identity-contract-bindings@0.1.3)(@futureverse/rpc-kit@0.1.3)(@polkadot/api@10.11.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(@therootnetwork/extrinsic@1.0.7)(@types/react@18.2.79)(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)(tslib@2.4.0)(typescript@5.4.5)(zod@3.22.5)
+    specifier: ^1.1.11
+    version: 1.1.11(@coinbase/wallet-sdk@3.9.3)(@emotion/react@11.10.8)(@futureverse/component-library@0.2.3)(@futureverse/experience-sdk@1.0.4)(@futureverse/identity-contract-bindings@0.1.3)(@futureverse/rpc-kit@0.1.3)(@polkadot/api@10.11.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(@therootnetwork/extrinsic@1.0.9)(@types/react@18.2.79)(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)(tslib@2.4.0)(typescript@5.4.5)(zod@3.22.5)
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.51.3)
@@ -141,8 +141,8 @@ dependencies:
     specifier: ^1.0.4
     version: 1.0.4
   '@therootnetwork/extrinsic':
-    specifier: ^1.0.5
-    version: 1.0.7(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0)
+    specifier: ^1.0.9
+    version: 1.0.9(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0)
   '@trpc/client':
     specifier: ^10.45.2
     version: 10.45.2(@trpc/server@10.45.2)
@@ -1072,7 +1072,7 @@ packages:
       '@futureverse/rpc-kit': 0.1.3
       '@sylo/io-ts': 0.0.17(tslib@2.4.0)
       '@sylo/logger': 0.2.0(tslib@2.4.0)
-      '@therootnetwork/extrinsic': 1.0.8(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0)
+      '@therootnetwork/extrinsic': 1.0.9(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0)
       '@web3-react/eip1193': 8.2.3(@types/react@18.2.79)(react@18.2.0)
       ethers: 5.7.2
       fp-ts: 2.16.5
@@ -1134,8 +1134,8 @@ packages:
       - zod
     dev: false
 
-  /@futureverse/react@1.1.7(@coinbase/wallet-sdk@3.9.3)(@emotion/react@11.10.8)(@futureverse/component-library@0.2.3)(@futureverse/experience-sdk@1.0.4)(@futureverse/identity-contract-bindings@0.1.3)(@futureverse/rpc-kit@0.1.3)(@polkadot/api@10.11.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(@therootnetwork/extrinsic@1.0.7)(@types/react@18.2.79)(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)(tslib@2.4.0)(typescript@5.4.5)(zod@3.22.5):
-    resolution: {integrity: sha512-vfV7ZTD9Lkpdp3go12g1dqTtK1tU1KgFj31YeNq5Tyuh9c+SdD/j4RWi9uF0Fw8iA+dgNk0XVDs5E2WObJZ5AQ==}
+  /@futureverse/react@1.1.11(@coinbase/wallet-sdk@3.9.3)(@emotion/react@11.10.8)(@futureverse/component-library@0.2.3)(@futureverse/experience-sdk@1.0.4)(@futureverse/identity-contract-bindings@0.1.3)(@futureverse/rpc-kit@0.1.3)(@polkadot/api@10.11.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(@therootnetwork/extrinsic@1.0.9)(@types/react@18.2.79)(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)(tslib@2.4.0)(typescript@5.4.5)(zod@3.22.5):
+    resolution: {integrity: sha512-TwZaya/IrEAQODKltL8TcJsXTerld/ESsgNoRnYO4ykFZFtjRi+R6Z6bsjKB9ewdb1wlxJSYfH7cVd3PeLjtjg==}
     peerDependencies:
       '@futureverse/component-library': ~0.2.0
       '@futureverse/experience-sdk': ~1.0.1
@@ -1147,7 +1147,7 @@ packages:
       '@polkadot/util-crypto': ^12.6.1
       '@therootnetwork/api': 1.0.8
       '@therootnetwork/api-types': 1.0.3
-      '@therootnetwork/extrinsic': 1.0.7
+      '@therootnetwork/extrinsic': 1.0.9
       react: ^18.2.0
     dependencies:
       '@apollo/client': 3.10.4(@types/react@18.2.79)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
@@ -1166,7 +1166,7 @@ packages:
       '@sylo/logger': 0.2.0(tslib@2.4.0)
       '@therootnetwork/api': 1.0.8(@polkadot/api@10.11.1)
       '@therootnetwork/api-types': 1.0.3
-      '@therootnetwork/extrinsic': 1.0.7(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0)
+      '@therootnetwork/extrinsic': 1.0.9(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0)
       '@web3-react/coinbase-wallet': 8.2.3(@coinbase/wallet-sdk@3.9.3)(@types/react@18.2.79)(react@18.2.0)
       '@web3-react/core': 8.2.3(@types/react@18.2.79)(react@18.2.0)
       '@web3-react/metamask': 8.2.4(@types/react@18.2.79)(react@18.2.0)
@@ -3889,40 +3889,8 @@ packages:
     resolution: {integrity: sha512-b7wPmjD6SVR0hvO+Kgtfyfg6rNRE3amz0UXiRFEPukJ7pEjP3qGcGU8K9TyqUFuuYPc8xw9UVF6W2vTcwXp0eg==}
     dev: false
 
-  /@therootnetwork/extrinsic@1.0.7(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0):
-    resolution: {integrity: sha512-/+dBWx098wM0Cd3+Fblbz1N6mr+AVE404E4JHt+mO66/CslveRqIMBxnUg6LuZ4WLGMbBnpkzR/fknCrXNdaig==}
-    peerDependencies:
-      '@polkadot/api': ^10.9.1
-      '@polkadot/keyring': ^12.6.2
-      '@polkadot/types': ^10.9.1
-      '@polkadot/types-codec': ^10.9.1
-      '@polkadot/util': ^12.6.2
-      '@polkadot/util-crypto': ^12.6.2
-      '@therootnetwork/api': ^1.0.8
-      '@therootnetwork/api-types': ^1.0.3
-      xrpl: ^3.0.0
-    dependencies:
-      '@ethersproject/signing-key': 5.7.0
-      '@polkadot/api': 10.11.1
-      '@polkadot/keyring': 12.6.2(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)
-      '@polkadot/types': 10.11.1
-      '@polkadot/types-codec': 10.13.1
-      '@polkadot/util': 12.6.2
-      '@polkadot/util-crypto': 12.6.2(@polkadot/util@12.6.2)
-      '@therootnetwork/api': 1.0.8(@polkadot/api@10.11.1)
-      '@therootnetwork/api-types': 1.0.3
-      codechain-primitives: 1.0.4
-      ethers: 6.12.1
-      neverthrow: 6.2.1
-      ripple-keypairs: 2.0.0
-      xrpl: 3.0.0(encoding@0.1.13)
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-    dev: false
-
-  /@therootnetwork/extrinsic@1.0.8(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0):
-    resolution: {integrity: sha512-grTJSF0IxGt6zFApO9tldnutfMz+X3pXHsPG6hV4p0LJlr/jrQJr2ilGn8CfS58tx8P1pBUhD6km0TuuYcOglw==}
+  /@therootnetwork/extrinsic@1.0.9(@polkadot/api@10.11.1)(@polkadot/keyring@12.6.2)(@polkadot/types-codec@10.13.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(xrpl@3.0.0):
+    resolution: {integrity: sha512-UnbCoukc87XA/U3QNOfalwF+QiOyAlZUPMVMc3UW7JUW0tq8WU71ig8TowYzNNsqGuMY6MmLXJ3YmHlcCI05qA==}
     peerDependencies:
       '@polkadot/api': ^10.9.1
       '@polkadot/keyring': ^12.6.2

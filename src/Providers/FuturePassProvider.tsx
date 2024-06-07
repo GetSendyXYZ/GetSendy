@@ -35,8 +35,8 @@ export default function FuturePassProvider({ children }: PropsWithChildren) {
       authClient={authClient}
       Web3Provider="wagmi"
       walletConnectProjectId={env.NEXT_PUBLIC_WALLET_CONNECT_ID}
-      isCustodialLoginEnabled={false}
-      isXamanLoginEnabled={false}
+      isCustodialLoginEnabled={true}
+      isXamanLoginEnabled={true}
     >
       {children}
     </FutureverseProvider>
