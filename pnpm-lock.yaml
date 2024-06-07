@@ -27,8 +27,8 @@ dependencies:
     specifier: ^0.9.0
     version: 0.9.0(@polkadot/api@10.11.1)(@tanstack/react-query@4.36.1)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(typescript@5.4.5)(zod@3.22.5)
   '@futureverse/react':
-    specifier: ^1.1.7
-    version: 1.1.7(@coinbase/wallet-sdk@3.9.3)(@emotion/react@11.10.8)(@futureverse/component-library@0.2.3)(@futureverse/experience-sdk@1.0.4)(@futureverse/identity-contract-bindings@0.1.3)(@futureverse/rpc-kit@0.1.3)(@polkadot/api@10.11.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(@therootnetwork/extrinsic@1.0.7)(@types/react@18.2.79)(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)(tslib@2.4.0)(typescript@5.4.5)(zod@3.22.5)
+    specifier: ^1.1.11
+    version: 1.1.11(@coinbase/wallet-sdk@3.9.3)(@emotion/react@11.10.8)(@futureverse/component-library@0.2.3)(@futureverse/experience-sdk@1.0.4)(@futureverse/identity-contract-bindings@0.1.3)(@futureverse/rpc-kit@0.1.3)(@polkadot/api@10.11.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(@therootnetwork/extrinsic@1.0.7)(@types/react@18.2.79)(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)(tslib@2.4.0)(typescript@5.4.5)(zod@3.22.5)
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.51.3)
@@ -1134,8 +1134,8 @@ packages:
       - zod
     dev: false
 
-  /@futureverse/react@1.1.7(@coinbase/wallet-sdk@3.9.3)(@emotion/react@11.10.8)(@futureverse/component-library@0.2.3)(@futureverse/experience-sdk@1.0.4)(@futureverse/identity-contract-bindings@0.1.3)(@futureverse/rpc-kit@0.1.3)(@polkadot/api@10.11.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(@therootnetwork/extrinsic@1.0.7)(@types/react@18.2.79)(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)(tslib@2.4.0)(typescript@5.4.5)(zod@3.22.5):
-    resolution: {integrity: sha512-vfV7ZTD9Lkpdp3go12g1dqTtK1tU1KgFj31YeNq5Tyuh9c+SdD/j4RWi9uF0Fw8iA+dgNk0XVDs5E2WObJZ5AQ==}
+  /@futureverse/react@1.1.11(@coinbase/wallet-sdk@3.9.3)(@emotion/react@11.10.8)(@futureverse/component-library@0.2.3)(@futureverse/experience-sdk@1.0.4)(@futureverse/identity-contract-bindings@0.1.3)(@futureverse/rpc-kit@0.1.3)(@polkadot/api@10.11.1)(@polkadot/types@10.11.1)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)(@therootnetwork/api-types@1.0.3)(@therootnetwork/api@1.0.8)(@therootnetwork/extrinsic@1.0.7)(@types/react@18.2.79)(encoding@0.1.13)(react-dom@18.2.0)(react@18.2.0)(tslib@2.4.0)(typescript@5.4.5)(zod@3.22.5):
+    resolution: {integrity: sha512-TwZaya/IrEAQODKltL8TcJsXTerld/ESsgNoRnYO4ykFZFtjRi+R6Z6bsjKB9ewdb1wlxJSYfH7cVd3PeLjtjg==}
     peerDependencies:
       '@futureverse/component-library': ~0.2.0
       '@futureverse/experience-sdk': ~1.0.1
@@ -1147,7 +1147,7 @@ packages:
       '@polkadot/util-crypto': ^12.6.1
       '@therootnetwork/api': 1.0.8
       '@therootnetwork/api-types': 1.0.3
-      '@therootnetwork/extrinsic': 1.0.7
+      '@therootnetwork/extrinsic': 1.0.9
       react: ^18.2.0
     dependencies:
       '@apollo/client': 3.10.4(@types/react@18.2.79)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
