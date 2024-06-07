@@ -1,9 +1,0 @@
-[user]
-  email = rich@getsendy.xyz
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgtzFSCrQASqENUm4dtRMwc1YMoiD0KQSrj9pgt39ht
-
-[commit]
-  gpgsign = true
-
-[gpg]
-  format = ssh
