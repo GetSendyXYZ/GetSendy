@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { useSendyProvider } from '@/Providers/SendyProvider';
 import { shortenAddress } from '@/utils';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import TransferToken from './assets/Transfer';
 import TransferNft from './nft/Transfer';
 import { AnimatePresence, type DragControls, motion } from 'framer-motion';
@@ -21,6 +21,8 @@ export default function TransactionData({
   index: number;
   dragControls: DragControls;
 }) {
+  const isDragging = useRef(false);
+
   const {
     setBatchedSendys,
     setTipAdded,
@@ -130,15 +132,23 @@ export default function TransactionData({
 
   const { data: rnsAddress, isFetching } = useRnsResolveAddress(sendy.address);
 
+  const startDrag = (e: React.PointerEvent) => {
+    if (e.target instanceof Element) {
+      dragControls.start(e);
+    }
+  };
+
   return (
     <motion.div
       layout="position"
-      className={`relative grid grid-cols-1 backdrop-blur-[6px] justify-between items-start p-2 border-[1px] border-sendy border-opacity-25 ${!sendy.isTip ? 'bg-mutedOpacity ' : 'bg-sendyOpacity '} bg-opacity-30 rounded-lg w-full z-10 mt-3 `}
-      onClick={() => setToggleOpen(!toggleOpen)}
+      className={`relative cursor-move overflow-hidden grid grid-cols-1 backdrop-blur-[6px] justify-between items-start p-2 border-[1px] border-sendy border-opacity-25 ${!sendy.isTip ? 'bg-mutedOpacity ' : 'bg-sendyOpacity '} bg-opacity-30 rounded-lg w-full z-10 mt-3 `}
+      onPointerDown={startDrag}
+      dragListener={false}
+      style={{ touchAction: 'none' }}
     >
       <div className="flex flex-row flex-nowrap -mb-4 -mt-2 -ml-2 -mr-2 w-[calc(100% + 4rem)] justify-stretch z-10">
         <div
-          className="bg-red-900 font-bold text-white  grid justify-center items-center rounded-tl-lg text-[9px] tracking-widest uppercase p-1 pr-2 pl-2"
+          className="bg-red-900 font-bold text-white  grid justify-center items-center rounded-tl-lg text-[9px] tracking-widest uppercase p-1 pr-2 pl-2 cursor-pointer"
           onClick={e => {
             e.stopPropagation();
             handleRemove();
@@ -147,8 +157,7 @@ export default function TransactionData({
           Remove
         </div>
         <div
-          className=" font-bold text-foreground bg-muted flex-grow flex-shrink text-[9px] tracking-widest uppercase p-1 pr-2 pl-2 text-center cursor-move"
-          onPointerDown={event => dragControls.start(event)}
+          className=" font-bold text-foreground bg-muted flex-grow flex-shrink text-[9px] tracking-widest uppercase p-1 pr-2 pl-2 text-center"
           onClick={e => e.stopPropagation()}
         >
           DRAG TO REORDER
@@ -205,6 +214,14 @@ export default function TransactionData({
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
+      </div>
+      <div className="flex flex-row flex-nowrap mt-3 -mb-2 -ml-2 -mr-2 w-[calc(100% + 4rem)] justify-stretch z-10">
+        <div
+          className=" font-bold text-foreground bg-muted flex-grow flex-shrink text-[9px] tracking-widest uppercase p-1 pr-2 pl-2 text-center cursor-pointer"
+          onClick={() => setToggleOpen(!toggleOpen)}
+        >
+          {toggleOpen ? 'SHOW LESS' : 'SHOW MORE'}
         </div>
       </div>
     </motion.div>

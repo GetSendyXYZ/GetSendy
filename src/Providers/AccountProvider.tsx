@@ -21,7 +21,7 @@ import useGetBalances from '@/hooks/useGetBalances';
 
 import useGetAllBalances from '@/hooks/useGetAllBalances';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { ethers } from 'ethers';
+import { providers } from 'ethers';
 import { networks } from 'rootnameservice';
 import { useFutureverse } from '@futureverse/react';
 import * as api from '@/api';
@@ -168,15 +168,14 @@ export const AccountProvider: React.FC<{
   );
 
   useEffect(() => {
+    const provider = new providers.JsonRpcProvider(
+      ROOT_RPC,
+      env.NEXT_PUBLIC_NETWORK === 'root' ? networks.root : networks.porcini
+    );
     const fetchRnsAddyEoa = async () => {
       if (!address || address.toString() === '') {
         return;
       }
-
-      const provider = new ethers.providers.JsonRpcProvider(
-        ROOT_RPC,
-        networks.root
-      );
 
       const resultEoa = await provider.lookupAddress(address?.toString());
       setRnsAddyEoa(resultEoa);
@@ -186,12 +185,6 @@ export const AccountProvider: React.FC<{
       if (!futurePass) {
         return;
       }
-
-      const provider = new ethers.providers.JsonRpcProvider(
-        ROOT_RPC,
-        networks.root
-      );
-
       const resultFuturePass = await provider.lookupAddress(futurePass);
       setRnsAddyFuturePass(resultFuturePass);
     };

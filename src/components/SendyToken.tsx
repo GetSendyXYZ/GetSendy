@@ -142,6 +142,16 @@ const SendyTokenInput = () => {
     setAddressToSend(address);
   };
 
+  const getValMax = useMemo(() => {
+    return parseFloat(
+      utils.formatUnits(
+        (tokensWithBalances?.find(t => t.tokenId === selectedTokenId)
+          ?.balance ?? BigInt(0)) - (assetTotals[selectedTokenId] ?? BigInt(0)),
+        tokensWithBalances?.find(t => t.tokenId === selectedTokenId)?.decimals
+      )
+    );
+  }, [selectedTokenId, tokensWithBalances, assetTotals]);
+
   return (
     <div className="grid grid-cols-1 gap-3 w-full backdrop-blur-[6px] justify-between items-center p-3 bg-mutedOpacity bg-opacity-60 rounded-lg z-20 relative ">
       <div className="text-foreground">
@@ -165,7 +175,7 @@ const SendyTokenInput = () => {
           </div>
           <div className="pt-2 inner relative">
             <div
-              className="absolute top-7 right-8 -translate-x-2 -translate-y-1/2 grid py-1 px-2 text-[9px] uppercase text-sendy tracking-wider cursor-pointer rounded-lg bg-muted hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
+              className="absolute top-7 right-0 -translate-x-2 -translate-y-1/2 grid py-1 px-2 text-[9px] uppercase text-sendy tracking-wider cursor-pointer rounded-lg bg-muted hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
               onClick={() =>
                 selectedTokenId && tokensWithBalances
                   ? setValue(
@@ -191,17 +201,13 @@ const SendyTokenInput = () => {
               className="text-[16px] md:text-sm text-foreground"
               placeholder="Token Amount"
               value={value.toString()}
-              onChange={e => setValue(parseFloat(e.target.value))}
+              onChange={e =>
+                parseFloat(e.target.value) < getValMax
+                  ? setValue(parseFloat(e.target.value))
+                  : null
+              }
               autoComplete="off"
-              max={parseFloat(
-                utils.formatUnits(
-                  (tokensWithBalances?.find(t => t.tokenId === selectedTokenId)
-                    ?.balance ?? BigInt(0)) -
-                    (assetTotals[selectedTokenId] ?? BigInt(0)),
-                  tokensWithBalances?.find(t => t.tokenId === selectedTokenId)
-                    ?.decimals
-                )
-              )}
+              max={getValMax}
             />
           </div>
         </div>
