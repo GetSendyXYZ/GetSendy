@@ -243,5 +243,8 @@ export interface SendyProps {
   setDownloadData: (downloadData: DownloadData) => void;
   recentlyUsedAddresses: string[];
   addRecentlyUsedAddress: (recentlyUsedAddresses: string) => void;
+  recentlyUsedCollection: string[];
+  addRecentlyUsedCollection: (recentlyUsedCollection: string) => void;
   resetRecentlyUsedAddresses: () => void;
+  resetRecentlyUsedCollections: () => void;
 }
