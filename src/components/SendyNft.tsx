@@ -19,6 +19,7 @@ import { RecentAddresses } from './RecentAddresses';
 import { useSendyProvider } from '@/Providers/SendyProvider';
 import type { Sendy } from '@/types';
 import { useRnsResolveRns } from '@/hooks/useRns';
+import ImageSelector from './ImageSelector';
 
 export default function SendyNft() {
   return (
@@ -35,6 +36,7 @@ const SendyNftInput = () => {
     selectedCollectionId,
     setSelectedCollectionId,
     setSelectedCollectionName,
+    setSelectedCollectionMetadata,
     selectedPairs,
     setSelectedPairs,
     addRecentlyUsedAddress,
@@ -43,7 +45,9 @@ const SendyNftInput = () => {
 
   const { rootApi } = useTrnApi();
 
-  const [values, setValues] = useState<Option[]>([]);
+  const [showImages, setShowImages] = useState(false);
+
+  const [values, setValues] = useState<Array<Option>>([]);
   const [collectionId, setCollectionId] = useState<string>(
     selectedCollectionId.toString()
   );
@@ -120,6 +124,16 @@ const SendyNftInput = () => {
     setSelectedCollectionName(colName);
     return colName;
   }, [data, setSelectedCollectionName]);
+
+  const collectionMetadata = useMemo(() => {
+    if (!data) {
+      return '';
+    }
+
+    const colMetadata = data?.collectionInfo?.tokenUri?.toString() ?? '';
+    setSelectedCollectionMetadata(colMetadata);
+    return colMetadata;
+  }, [data, setSelectedCollectionMetadata]);
 
   const handleAddTransaction = () => {
     if (
@@ -242,26 +256,66 @@ const SendyNftInput = () => {
           )}
         </div>
       </div>
-      {tokens && tokens.length > 0 && (
-        <div className="text-foreground">
-          <>
-            <div className="pb-2 inner">
-              <h2>Select token ids to send from {collectionName}</h2>
+      {collectionIdToUse &&
+        tokens.length === 0 &&
+        !isLoading &&
+        !isFetching && (
+          <div className="text-foreground">
+            <div className="p-2 bg-muted w-full rounded-md">
+              No tokens found in wallet
             </div>
-            <NftTokenSelector
-              placeholder="Select Token Ids"
-              options={tokens.map(t => {
-                return {
-                  value: t.id.toString(),
-                  label: t.id,
-                } as unknown as Option;
-              })}
-              values={values}
-              setValues={setValues}
-            />
+          </div>
+        )}
+      {tokens &&
+        tokens.length > 0 &&
+        (showImages ? (
+          <>
+            <div className="text-foreground">
+              <>
+                <div className="pb-2 inner flex flex-row justify-between">
+                  <h2>Select token ids to send from {collectionName}</h2>
+                  <div
+                    onClick={() => setShowImages(false)}
+                    className="leading-0 flex py-1 px-2 text-[9px] uppercase text-sendy tracking-wider cursor-pointer rounded-lg bg-muted hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
+                  >
+                    Show By List
+                  </div>
+                </div>
+                <ImageSelector
+                  tokens={tokens}
+                  metadataUrl={collectionMetadata}
+                  values={values}
+                  setValues={setValues}
+                />
+              </>
+            </div>
           </>
-        </div>
-      )}
+        ) : (
+          <div className="text-foreground">
+            <>
+              <div className="pb-2 inner flex flex-row justify-between">
+                <h2>Select token ids to send from {collectionName}</h2>
+                <div
+                  onClick={() => setShowImages(true)}
+                  className="leading-0 flex py-1 px-2 text-[9px] uppercase text-sendy tracking-wider cursor-pointer rounded-lg bg-muted hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
+                >
+                  Show By Image
+                </div>
+              </div>
+              <NftTokenSelector
+                placeholder="Select Token Ids"
+                options={tokens.map(t => {
+                  return {
+                    value: t.id.toString(),
+                    label: t.id,
+                  } as unknown as Option;
+                })}
+                values={values}
+                setValues={setValues}
+              />
+            </>
+          </div>
+        ))}
       {values && values.length > 0 && (
         <div className="text-foreground">
           <div className="pb-2 inner">

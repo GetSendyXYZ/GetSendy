@@ -2,6 +2,7 @@ import { type SubmittableExtrinsic } from '@polkadot/api/types';
 import { type ISubmittableResult } from '@polkadot/types/types';
 import type { ApiPromise } from '@polkadot/api/promise';
 import type { NetworkName } from '@therootnetwork/api';
+import { Metadata } from '@futureverse/react';
 
 export type Extrinsic = SubmittableExtrinsic<'promise', ISubmittableResult>;
 export type ExtrinsicArray = Array<Extrinsic>;
@@ -179,6 +180,15 @@ export type OutputData<T extends SendyTokenType> =
       ? Record<string, number[]>
       : Record<string, number>;
 
+export type NftMetadata = {
+  properties: Record<string, string>;
+  uri: string;
+  attributes: Array<{ trait_type: string; value: string }>;
+  image: string;
+  animation_url: string;
+  image_png: string;
+};
+
 export interface SendyProps {
   BATCH_SIZE: number;
   tipAdded: boolean;
@@ -200,6 +210,8 @@ export interface SendyProps {
   setSelectedCollectionId: (selectedCollectionId: number) => void;
   selectedCollectionName: string;
   setSelectedCollectionName: (selectedCollectionName: string) => void;
+  selectedCollectionMetadata: string;
+  setSelectedCollectionMetadata: (selectedCollectionMetadata: string) => void;
   selectedTokenSymbol: string;
   setSelectedTokenSymbol: (selectedTokenSymbol: string) => void;
   currentTxStatus: SendyTxStatus;

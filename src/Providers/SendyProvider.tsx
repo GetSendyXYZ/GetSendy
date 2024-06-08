@@ -61,6 +61,8 @@ export const SendyProvider: React.FC<{
   const [selectedCollectionId, setSelectedCollectionId] = useState<number>(0);
   const [selectedCollectionName, setSelectedCollectionName] =
     useState<string>('');
+  const [selectedCollectionMetadata, setSelectedCollectionMetadata] =
+    useState<string>('');
   const [selectedTokenSymbol, setSelectedTokenSymbol] = useState<string>('');
 
   const [currentTxStatus, setCurrentTxStatus] = useState<SendyTxStatus>(
@@ -128,6 +130,7 @@ export const SendyProvider: React.FC<{
     setSelectedTokenSymbol('');
     setSelectedCollectionId(0);
     setSelectedCollectionName('');
+    setSelectedCollectionMetadata('');
     setCurrentTxStatus(SendyTxStatus.Idle);
     setInputData('');
     setOutputData({});
@@ -148,6 +151,8 @@ export const SendyProvider: React.FC<{
     setTokenType,
     setSelectedTokenId,
     setSelectedCollectionId,
+    setSelectedCollectionName,
+    setSelectedCollectionMetadata,
     setSelectedTokenSymbol,
     setCurrentTxStatus,
     setInputData,
@@ -202,6 +207,8 @@ export const SendyProvider: React.FC<{
         resetSendyProvider,
         selectedCollectionName,
         setSelectedCollectionName,
+        selectedCollectionMetadata,
+        setSelectedCollectionMetadata,
         assetTotals,
         setAssetTotals,
         selectedPairs,

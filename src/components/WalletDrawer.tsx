@@ -32,6 +32,7 @@ import Image from 'next/image';
 import { useSendyProvider } from '@/Providers/SendyProvider';
 import type { ITokenWithBalance } from '@/types';
 import { shortenAddress } from '@/utils';
+import { useRnsResolveAddress } from '@/hooks/useRns';
 
 export const WalletDrawer = () => {
   const { network } = useNetworkSelector();
@@ -43,6 +44,8 @@ export const WalletDrawer = () => {
   const addressToUse = useMemo(() => {
     return activeAccount === 'eoa' ? address : futurePass ?? '';
   }, [address, futurePass, activeAccount]);
+
+  const { data: rnsAddress } = useRnsResolveAddress(addressToUse ?? '');
 
   const shortAddress = useMemo(
     () =>
@@ -56,7 +59,7 @@ export const WalletDrawer = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button className="dark:bg-sendyOpacity hover:bg-opacity-40 dark:hover:bg-opacity-40 transition-all duration-300 uppercase text-xs tracking-wider">
-          {shortAddress}
+          {rnsAddress ?? shortAddress}
         </Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col space-y-1 border-l-0">
@@ -118,7 +121,7 @@ export const WalletCard = ({
   type: 'eoa' | 'futurePass';
 }) => {
   const { resetSendyProvider } = useSendyProvider();
-
+  const { data: rnsAddress } = useRnsResolveAddress(address ?? '');
   const {
     balances,
     futurePassBalances,
@@ -169,13 +172,13 @@ export const WalletCard = ({
             )}
             <CardHeader className="p-0">
               <div className="flex flex-row justify-start items-center leading-none">
-                {shortAddress}
+                {rnsAddress ?? shortAddress}
                 <Copy
                   size={16}
                   className="ml-2 cursor-pointer"
                   onClick={(e: { stopPropagation: () => void }) => {
                     e.stopPropagation();
-                    copyText(fullAddress);
+                    copyText(rnsAddress ?? fullAddress);
                   }}
                 />
               </div>
@@ -188,7 +191,7 @@ export const WalletCard = ({
                     className="ml-2 cursor-pointer"
                     onClick={(e: { stopPropagation: () => void }) => {
                       e.stopPropagation();
-                      copyText(fullAddress);
+                      copyText(rnsAddress ?? fullAddress);
                     }}
                   />
                 </div>
