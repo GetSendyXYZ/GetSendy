@@ -86,26 +86,48 @@ export const SendyProvider: React.FC<{
   const [assetTotals, setAssetTotals] = useState<Record<number, bigint>>({});
 
   const recentlyUsedAddressKey = 'recentlyUsedAddresses';
+  const recentlyUsedCollectionKey = 'recentlyUsedCollections';
 
-  const [storedValue, setValue] = useLocalStorage<string[]>(
+  const [storedAddresses, addRecentAddress] = useLocalStorage<string[]>(
     recentlyUsedAddressKey,
+    []
+  );
+
+  const [storedCollection, addRecentCollection] = useLocalStorage<string[]>(
+    recentlyUsedCollectionKey,
     []
   );
 
   const addRecentlyUsedAddress = useCallback(
     (inputData: string) => {
       // console.log('inputData', inputData);
-      const currentAddresses = storedValue;
+      const currentAddresses = storedAddresses;
       if (!currentAddresses.includes(inputData)) {
         currentAddresses.push(inputData);
       }
-      setValue(currentAddresses);
+      addRecentAddress(currentAddresses);
     },
-    [setValue, storedValue]
+    [addRecentAddress, storedAddresses]
+  );
+
+  const addRecentlyUsedCollection = useCallback(
+    (inputData: string) => {
+      // console.log('inputData', inputData);
+      const currentCollections = storedCollection;
+      if (!currentCollections.includes(inputData)) {
+        currentCollections.push(inputData);
+      }
+      addRecentCollection(currentCollections);
+    },
+    [addRecentCollection, storedCollection]
   );
 
   const resetRecentlyUsedAddresses = useCallback(() => {
     localStorage.removeItem(recentlyUsedAddressKey);
+  }, []);
+
+  const resetRecentlyUsedCollections = useCallback(() => {
+    localStorage.removeItem(recentlyUsedCollectionKey);
   }, []);
 
   const resetAlert = useCallback(() => {
@@ -215,9 +237,12 @@ export const SendyProvider: React.FC<{
         setSelectedPairs,
         downloadData,
         setDownloadData,
-        recentlyUsedAddresses: storedValue,
+        recentlyUsedAddresses: storedAddresses,
+        recentlyUsedCollection: storedCollection,
         addRecentlyUsedAddress,
+        addRecentlyUsedCollection,
         resetRecentlyUsedAddresses,
+        resetRecentlyUsedCollections,
       }}
     >
       <>

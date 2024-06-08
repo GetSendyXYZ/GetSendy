@@ -112,7 +112,7 @@ export function ImageItem({
   const [showMetaModal, setShowMetaModal] = useState(false);
 
   const getRawMetadata = async () => {
-    const res = await fetch(`${metadataUrl}/${token}`);
+    const res = await fetch(`${metadataUrl}${token}`);
     const metadata = (await res.json()) as NftMetadata;
     return metadata;
   };

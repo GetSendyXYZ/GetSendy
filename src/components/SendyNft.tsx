@@ -41,6 +41,8 @@ const SendyNftInput = () => {
     setSelectedPairs,
     addRecentlyUsedAddress,
     recentlyUsedAddresses,
+    addRecentlyUsedCollection,
+    recentlyUsedCollection,
   } = useSendyProvider();
 
   const { rootApi } = useTrnApi();
@@ -162,6 +164,10 @@ const SendyNftInput = () => {
     };
 
     addRecentlyUsedAddress(debouchedAddressToSend);
+    addRecentlyUsedCollection(collectionIdToUse);
+
+    console.log('collectionIdToUse', collectionIdToUse);
+
     //@ts-expect-error - Typing issue
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
     setBatchedSendys((prev: BatchedSendys) => [...prev, sendy]);
@@ -207,6 +213,8 @@ const SendyNftInput = () => {
     }
   }, [debouchedAddressToSend]);
 
+  console.log('recentlyUsedCollection', recentlyUsedCollection);
+
   return (
     <div className="grid grid-cols-1 gap-3 p-3 backdrop-blur-[6px] justify-between items-center bg-mutedOpacity bg-opacity-60 rounded-lg w-full z-20 relative ">
       <div className="text-foreground">
@@ -235,7 +243,7 @@ const SendyNftInput = () => {
                 <div className="">
                   {commonCollections?.[env.NEXT_PUBLIC_NETWORK]?.map(
                     (collection, i) => (
-                      <Fragment key={i}>
+                      <Fragment key={`common-collection-${i}`}>
                         <div
                           className="px-2 py-4 text-xs cursor-pointer hover:bg-muted dark:hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
                           onClick={() => {
@@ -250,6 +258,20 @@ const SendyNftInput = () => {
                       </Fragment>
                     )
                   )}
+                  {recentlyUsedCollection?.map((collection, i) => (
+                    <Fragment key={`recent-collection-${i}`}>
+                      <div
+                        className="px-2 py-4 text-xs cursor-pointer hover:bg-muted dark:hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
+                        onClick={() => {
+                          setCollectionId(collection);
+                          setShowCommonCollections(false);
+                        }}
+                      >
+                        {collection}
+                      </div>
+                      <Separator className="" />
+                    </Fragment>
+                  ))}
                 </div>
               </ScrollArea>
             </div>
@@ -278,7 +300,7 @@ const SendyNftInput = () => {
                     onClick={() => setShowImages(false)}
                     className="leading-0 flex py-1 px-2 text-[9px] uppercase text-sendy tracking-wider cursor-pointer rounded-lg bg-muted hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
                   >
-                    Show By List
+                    Add By List
                   </div>
                 </div>
                 <ImageSelector
@@ -299,7 +321,7 @@ const SendyNftInput = () => {
                   onClick={() => setShowImages(true)}
                   className="leading-0 flex py-1 px-2 text-[9px] uppercase text-sendy tracking-wider cursor-pointer rounded-lg bg-muted hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
                 >
-                  Show By Image
+                  Add By Image
                 </div>
               </div>
               <NftTokenSelector
