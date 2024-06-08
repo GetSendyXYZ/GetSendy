@@ -14,8 +14,13 @@ const provider = new providers.JsonRpcProvider(
   ROOT_RPC,
   env.NEXT_PUBLIC_NETWORK === 'root' ? networks.root : networks.porcini
 );
-const nameWrapper = '0x44640d662a423d738d5ebf8b51e57afc0f2cf4df';
-const network = 'mainnet';
+
+const nameWrapper =
+  env.NEXT_PUBLIC_NETWORK === 'root'
+    ? '0x44640d662a423d738d5ebf8b51e57afc0f2cf4df'
+    : '0xBDC394b7704d3E0DC963a6Cb0Db92cBA2054da23';
+
+const network = env.NEXT_PUBLIC_NETWORK === 'root' ? 'mainnet' : 'testnet';
 
 export const getRnsUrl = (hash: string) => {
   return `https://rns-metadata.fly.dev/${network}/${nameWrapper}/${hash}`;
@@ -29,17 +34,22 @@ interface ERC1155 extends Contract {
 export const getRnsFromAddress = async (
   address: string
 ): Promise<string | null> => {
-  return (await provider.lookupAddress(address)) ?? null;
+  console.log('provider', provider);
+  console.log('looking up', address);
+  const addy = await provider.lookupAddress(address);
+  console.log('found', addy);
+  return addy;
 };
 
 export const getAddressFromRns = async (
-  ens: string
+  rns: string
 ): Promise<string | null> => {
-  return await provider.resolveName(ens);
+  console.log('looking up', rns);
+  return await provider.resolveName(rns);
 };
 
-export const getRnsImage = async (ens: string): Promise<string | null> => {
-  const url = getRnsUrl(utils.namehash(ens));
+export const getRnsImage = async (rns: string): Promise<string | null> => {
+  const url = getRnsUrl(utils.namehash(rns));
   return (await fetch(url + '/image')).text();
 };
 

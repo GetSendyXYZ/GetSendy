@@ -29,7 +29,7 @@ export default function Sendy() {
         <AnimatePresence>
           <motion.div className={`grid  grid-cols-1 lg:grid-cols-12 gap-9`}>
             <motion.div
-              className={`lg:col-span-8 ${batchedSendys.length === 0 ? 'lg:col-start-3' : 'lg:col-start-0'}`}
+              className={`lg:col-span-8 ${batchedSendys.length === 0 ? 'lg:col-start-3' : 'lg:col-start-0'} mb-16`}
             >
               <Tabs defaultValue={tab ?? 'token'} className="w-full">
                 <TabsList className="mb-3 w-full flex gap-2 h-14 p-2 bg-muted text-foreground">
