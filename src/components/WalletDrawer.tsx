@@ -209,7 +209,7 @@ export const WalletCard = ({
                       return (
                         <React.Fragment key={token.tokenId}>
                           <div
-                            className={`inline-flex flex-row justify-items-center items-center px-2 py-1 rounded-md bg-gray-300 text-primary dark:bg-gray-600 border-[1px] ${chosenGasToken === token.tokenId && activeAccountAddress === address ? 'border-sendy' : 'border-transparent'} `}
+                            className={`inline-flex flex-row justify-items-center items-center px-2 py-1 rounded-md bg-gray-300 text-primary dark:bg-gray-600 border-[1px] ${chosenGasToken === token.tokenId && (activeAccountAddress === rnsAddress || activeAccountAddress === fullAddress) ? 'border-sendy' : 'border-transparent'} `}
                             onClick={() => setChosenGasToken(token.tokenId)}
                           >
                             <div className="image-wrap h-[16px] w-[16px] mr-1 ">

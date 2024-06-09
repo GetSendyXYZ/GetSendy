@@ -164,9 +164,15 @@ const SendyNftInput = () => {
     };
 
     addRecentlyUsedAddress(debouchedAddressToSend);
-    addRecentlyUsedCollection(collectionIdToUse);
 
-    console.log('collectionIdToUse', collectionIdToUse);
+    // Check if the collection is in the common collections list, if not add it to the recently used collections
+    if (
+      !commonCollections?.[env.NEXT_PUBLIC_NETWORK]?.find(
+        cc => cc.collectionId.toString() === collectionIdToUse
+      )
+    ) {
+      addRecentlyUsedCollection(collectionIdToUse);
+    }
 
     //@ts-expect-error - Typing issue
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return
@@ -212,8 +218,6 @@ const SendyNftInput = () => {
       return false;
     }
   }, [debouchedAddressToSend]);
-
-  console.log('recentlyUsedCollection', recentlyUsedCollection);
 
   return (
     <div className="grid grid-cols-1 gap-3 p-3 backdrop-blur-[6px] justify-between items-center bg-mutedOpacity bg-opacity-60 rounded-lg w-full z-20 relative ">

@@ -34,17 +34,12 @@ interface ERC1155 extends Contract {
 export const getRnsFromAddress = async (
   address: string
 ): Promise<string | null> => {
-  console.log('provider', provider);
-  console.log('looking up', address);
-  const addy = await provider.lookupAddress(address);
-  console.log('found', addy);
-  return addy;
+  return await provider.lookupAddress(address);
 };
 
 export const getAddressFromRns = async (
   rns: string
 ): Promise<string | null> => {
-  console.log('looking up', rns);
   return await provider.resolveName(rns);
 };
 

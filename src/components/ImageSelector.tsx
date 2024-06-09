@@ -5,12 +5,15 @@ import {
   type PropsWithChildren,
   type Dispatch,
   type SetStateAction,
+  useEffect,
 } from 'react';
 import { type Option } from './ui/multiple-selector';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import type { NftMetadata } from '@/types';
 import { Dialog, DialogContent } from './ui/dialog';
+
+const ITEMS_PER_PAGE = 50;
 
 export default function ImageSelector({
   tokens,
@@ -23,14 +26,16 @@ export default function ImageSelector({
   values: Array<Option>;
   setValues: Dispatch<SetStateAction<Option[]>>;
 }) {
-  const ITEMS_PER_PAGE = 30;
-
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
 
   const paginatedTokens = tokens.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [metadataUrl]);
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -41,57 +46,70 @@ export default function ImageSelector({
   };
 
   const paginationContent = (
-    <div className="grid grid-cols-3 justify-center items-center">
-      <button
-        className="py-2 bg-transparent text-foreground rounded-md mr-2 opacity-60 hover:opacity-100 transition-opacity duration-300 uppercase tracking-widest text-sm text-start"
-        onClick={handlePreviousPage}
-        disabled={currentPage === 1}
-      >
-        ← Previous Page
-      </button>
-      <span className="py-2 bg-transparent text-foreground rounded-md mr-2 opacity-60 transition-opacity duration-300 uppercase tracking-widest text-[0.8rem] text-center">
-        {startIndex + 1}-{endIndex >= tokens.length ? tokens.length : endIndex}{' '}
-        of {tokens.length}
-      </span>
-      <button
-        className="py-2 bg-transparent text-foreground rounded-md opacity-60 hover:opacity-100 transition-opacity duration-300 uppercase tracking-widest text-sm text-end"
-        onClick={handleNextPage}
-        disabled={endIndex >= tokens.length}
-      >
-        Next Page →
-      </button>
+    <div className="grid grid-cols-3  items-center">
+      <div className="w-full text-start">
+        {currentPage !== 1 && (
+          <button
+            className="py-2 bg-transparent text-foreground rounded-md opacity-60 hover:opacity-100 transition-opacity duration-300 uppercase tracking-widest text-sm leading-none "
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+          >
+            ← Previous Page
+          </button>
+        )}
+      </div>
+      <div className="w-full text-center">
+        <span className="py-2 bg-transparent text-foreground rounded-md  opacity-60 transition-opacity duration-300 uppercase tracking-widest text-[0.8rem] leading-none ">
+          {startIndex + 1}-
+          {endIndex >= tokens.length ? tokens.length : endIndex} of{' '}
+          {tokens.length}
+        </span>
+      </div>
+      <div className="w-full text-end">
+        {endIndex < tokens.length && (
+          <button
+            className="py-2 bg-transparent text-foreground rounded-md opacity-60 hover:opacity-100 transition-opacity duration-300 uppercase tracking-widest text-sm leading-none "
+            onClick={handleNextPage}
+            disabled={endIndex >= tokens.length}
+          >
+            Next Page →
+          </button>
+        )}
+      </div>
     </div>
   );
 
   return (
     <div>
       {paginationContent}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4 mt-2 mb-2 max-h-[40vh] overflow-y-scroll scroll-pr-6">
-        {paginatedTokens.map(token => (
-          <ImageItem
-            key={token.id}
-            token={token.id}
-            metadataUrl={metadataUrl}
-            selected={
-              values.find(v => Number(v.value) === token.id) !== undefined
-            }
-            onChange={value => {
-              setValues(values => {
-                const index = values.findIndex(
-                  v => Number(v.value) === token.id
-                );
-                if (index === -1) {
-                  return [...values, value];
-                } else {
-                  return [
-                    ...values.slice(0, index),
-                    ...values.slice(index + 1),
-                  ];
-                }
-              });
-            }}
-          />
-        ))}
+      <div className="p-2 bg-muted w-full rounded-md">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 mt-2 mb-2 max-h-[40vh] overflow-auto scroll-pr-6">
+          {paginatedTokens.map(token => (
+            <ImageItem
+              key={token.id}
+              token={token.id}
+              metadataUrl={metadataUrl}
+              selected={
+                values.find(v => Number(v.value) === token.id) !== undefined
+              }
+              onChange={value => {
+                setValues(values => {
+                  const index = values.findIndex(
+                    v => Number(v.value) === token.id
+                  );
+                  if (index === -1) {
+                    return [...values, value];
+                  } else {
+                    return [
+                      ...values.slice(0, index),
+                      ...values.slice(index + 1),
+                    ];
+                  }
+                });
+              }}
+            />
+          ))}
+        </div>
       </div>
       {paginationContent}
     </div>
@@ -132,7 +150,7 @@ export function ImageItem({
 
   return (
     <div
-      className={`w-full cursor-pointer flex flex-col overflow-hidden ${!selected ? 'bg-mutedOpacity text-foreground' : 'bg-sendyOpacity text-black'} bg-opacity-100 rounded-lg  hover:border-sendyPrimary hover:bg-sendyOpacity hover:bg-opacity-65 transition-colors duration-200`}
+      className={`w-full cursor-pointer flex flex-col overflow-hidden ${!selected ? 'bg-mutedOpacity text-foreground hover:border-sendyPrimary hover:bg-sendyOpacity hover:bg-opacity-65 hover:border-opacity-65' : 'bg-sendyOpacity text-black hover:border-sendyPrimary hover:bg-sendyOpacity hover:bg-opacity-85 hover:border-opacity-85'} bg-opacity-100 rounded-lg transition-colors duration-200`}
       onClick={() =>
         onChange({ value: token.toString(), label: token.toString() })
       }
@@ -147,12 +165,13 @@ export function ImageItem({
         />
         <div
           onClick={() => setShowMetaModal(!showMetaModal)}
-          className="absolute leading-0 top-2 right-2 z-10 flex py-1 px-2 text-[9px] uppercase text-black tracking-wider cursor-pointer rounded-lg bg-white hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out w-auto"
+          onMouseEnter={e => e.stopPropagation()}
+          className="absolute leading-0 top-2 right-2 z-10 flex py-[0.1rem] px-[0.4rem] text-[9px] uppercase text-black tracking-widest cursor-pointer rounded-lg bg-white hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out w-auto"
         >
-          Show Attributes
+          Attributes
         </div>
       </div>
-      <div className="flex justify-between items-center p-2 pb-0">
+      <div className="flex justify-between items-center p-2 pb-0 text-sm">
         <span>ID {token}</span>
       </div>
       {metadata && (
