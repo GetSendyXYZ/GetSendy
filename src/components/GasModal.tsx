@@ -4,14 +4,12 @@ import { Dialog, DialogContent } from '@/components/ui/dialog';
 
 import { useTxProvider } from '@/Providers/TxProvider';
 import { useAccountProvider } from '@/Providers/AccountProvider';
-import { useAccount } from 'wagmi';
 
 import { utils } from 'ethers';
 import Image from 'next/image';
 
 const GasModal: React.FC = () => {
   const { showGasModal, setShowGasModal } = useTxProvider();
-  const { address } = useAccount();
 
   const {
     balances,
@@ -24,9 +22,6 @@ const GasModal: React.FC = () => {
 
   const balancesToUse = activeAccount === 'eoa' ? balances : futurePassBalances;
 
-  // console.log(balances, futurePassBalances);
-  // console.log('balancesToUse', balancesToUse);
-
   return (
     <Dialog
       open={showGasModal}
@@ -37,7 +32,7 @@ const GasModal: React.FC = () => {
       >
         <h4>Choose Gas Token</h4>
 
-        {address && (
+        {activeAccountAddress && (
           <div className="flex flex-row flex-wrap gap-2 mt-4">
             {balancesToUse
               ?.filter(token => token.balance > 0)
@@ -45,7 +40,7 @@ const GasModal: React.FC = () => {
                 return (
                   <React.Fragment key={token.tokenId}>
                     <div
-                      className={`inline-flex flex-row justify-items-center items-center px-2 py-1 rounded-md bg-gray-300 text-primary dark:bg-gray-600 border-[1px] ${chosenGasToken === token.tokenId && activeAccountAddress === address ? 'border-sendy' : 'border-transparent'} cursor-pointer`}
+                      className={`inline-flex flex-row justify-items-center items-center px-2 py-1 rounded-md bg-gray-300 text-primary dark:bg-gray-600 border-[1px] ${chosenGasToken === token.tokenId ? 'border-sendy' : 'border-transparent'} cursor-pointer`}
                       onClick={() => {
                         setChosenGasToken(token.tokenId);
                         setShowGasModal(false);
