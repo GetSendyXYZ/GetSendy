@@ -247,4 +247,7 @@ export interface SendyProps {
   addRecentlyUsedCollection: (recentlyUsedCollection: string) => void;
   resetRecentlyUsedAddresses: () => void;
   resetRecentlyUsedCollections: () => void;
+
+  handleDownloadCSV: (filename: string, nextStep: SendyProcess) => void;
+  handleDownloadJSON: (filename: string, nextStep: SendyProcess) => void;
 }

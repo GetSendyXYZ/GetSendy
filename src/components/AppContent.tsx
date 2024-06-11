@@ -138,26 +138,22 @@ export function AppContent() {
           <MotionLink
             variants={item}
             href="/airdrop?tab=token"
-            className="h-full opacity-50 cursor-not-allowed"
+            className="h-full"
           >
-            <div className="grid px-2 py-8 h-full bg-gray-800 bg-opacity-80 backdrop-blur-lg border-[1px] border-transparent hover:border-sendy transition-all duration-300 ease-in-out rounded-lg justify-center items-center opacity-20">
+            <div className="grid px-2 py-8 h-full bg-gray-800 bg-opacity-80 backdrop-blur-lg border-[1px] border-transparent hover:border-sendy transition-all duration-300 ease-in-out rounded-lg justify-center items-center">
               <div className="text-background dark:text-sendy text-[1.6rem] md:text-[2rem] text-center font-bold md:font-black leading-none p-2">
                 Airdrop Tokens
-                <br />
-                <span className="text-sm">(coming soon)</span>
               </div>
             </div>
           </MotionLink>
           <MotionLink
             variants={item}
             href="/airdrop?tab=nft"
-            className="h-full opacity-50 cursor-not-allowed"
+            className="h-full"
           >
-            <div className="grid px-2 py-8 h-full bg-gray-800 bg-opacity-80 backdrop-blur-lg border-[1px] border-transparent hover:border-sendy transition-all duration-300 ease-in-out rounded-lg justify-center items-center opacity-20">
+            <div className="grid px-2 py-8 h-full bg-gray-800 bg-opacity-80 backdrop-blur-lg border-[1px] border-transparent hover:border-sendy transition-all duration-300 ease-in-out rounded-lg justify-center items-center">
               <div className="text-background dark:text-sendy text-[1.6rem] md:text-[2rem] text-center font-bold md:font-black leading-none p-2">
                 Airdrop NFTS
-                <br />
-                <span className="text-sm">(coming soon)</span>
               </div>
             </div>
           </MotionLink>

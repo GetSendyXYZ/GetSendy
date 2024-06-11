@@ -6,7 +6,6 @@ import { useTrnApi } from '@/Providers/TrnApiProvider';
 import { useState, useMemo, useCallback } from 'react';
 import { utils } from 'ethers';
 
-import TokenDropDown from './TokenDropDown';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useDebounce } from './ui/multiple-selector';
@@ -16,6 +15,7 @@ import { Checkbox } from './ui/checkbox';
 import { RecentAddresses } from './RecentAddresses';
 import type { BatchedSendys, Sendy } from '@/types';
 import { useRnsResolveRns } from '@/hooks/useRns';
+import { TokensWithRecent } from './TokensWithRecent';
 
 export default function SendyToken() {
   return (
@@ -37,7 +37,6 @@ const SendyTokenInput = () => {
     recentlyUsedAddresses,
   } = useSendyProvider();
 
-  const queryClient = useQueryClient();
   const { rootApi } = useTrnApi();
 
   const [value, setValue] = useState<number>(0);
@@ -154,20 +153,7 @@ const SendyTokenInput = () => {
 
   return (
     <div className="grid grid-cols-1 gap-3 w-full backdrop-blur-[6px] justify-between items-center p-3 bg-mutedOpacity bg-opacity-60 rounded-lg z-20 relative ">
-      <div className="text-foreground">
-        <h2>Select tokens in your wallet</h2>
-        <div className=" pt-2 inner relative">
-          <div
-            className="absolute top-7 right-8 -translate-x-2 -translate-y-1/2 grid py-1 px-2 text-[9px] uppercase text-sendy tracking-wider cursor-pointer rounded-lg bg-muted hover:bg-sendy hover:text-background transition-all duration-300 ease-in-out"
-            onClick={async () => {
-              await queryClient.invalidateQueries();
-            }}
-          >
-            REFRESH TOKEN LIST
-          </div>
-          <TokenDropDown />
-        </div>
-      </div>
+      <TokensWithRecent />
       {selectedTokenId ? (
         <div className="text-foreground">
           <div className=" inner">

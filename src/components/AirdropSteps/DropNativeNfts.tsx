@@ -6,13 +6,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 'use client';
 
-import { Button } from './ui/button';
-import { Input } from './ui/input';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 import { useCallback, useState } from 'react';
 
 import useDebounce from '@/hooks/useDebounce';
 
-import { AutosizeTextarea } from './AutoSizeTextArea';
+import { AutosizeTextarea } from '../AutoSizeTextArea';
 import { useDropzone } from 'react-dropzone';
 import { useSendyProvider } from '@/Providers/SendyProvider';
 import { useTrnApi } from '@/Providers/TrnApiProvider';
@@ -21,7 +21,7 @@ import { SendyProcess } from '@/types';
 import { useAccountProvider } from '@/Providers/AccountProvider';
 import { utils } from 'ethers';
 
-export function DropNativeTokens() {
+export function DropNativeNfts() {
   const {
     setInputData,
     setAlert,

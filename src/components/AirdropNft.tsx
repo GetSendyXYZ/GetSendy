@@ -1,12 +1,12 @@
-import { DropNativeTokens } from './AirdropSteps/DropNativeTokens';
 import { SendyProcess } from '@/types';
-import SendAirdrop from './AirdropSteps/SendAirdrop';
+import { DropNativeNfts } from './AirdropSteps/DropNativeNfts';
 import DownloadDataStep from './AirdropSteps/DownloadDataStep';
 import DropComponent from './AirdropSteps/DropComponent';
-import { TokensWithRecent } from './TokensWithRecent';
+import SendAirdrop from './AirdropSteps/SendAirdrop';
+import CollectionsWithRecentAndCommon from './CollectionsWithRecentAndCommon';
 import { useSendyProvider } from '@/Providers/SendyProvider';
 
-export default function AirdropTokens() {
+export default function AirdropNft() {
   return (
     <div className="">
       <StepOne />
@@ -25,7 +25,7 @@ const StepOne = () => {
       data-step="Step 1"
       id="step-1"
     >
-      <TokensWithRecent />
+      <CollectionsWithRecentAndCommon />
     </div>
   );
 };
@@ -33,7 +33,7 @@ const StepOne = () => {
 const StepTwo = () => {
   return (
     <DropComponent thisSendyProcess={SendyProcess.StageTwo}>
-      <DropNativeTokens />
+      <DropNativeNfts />
     </DropComponent>
   );
 };

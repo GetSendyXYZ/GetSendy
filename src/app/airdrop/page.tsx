@@ -1,5 +1,6 @@
 'use client';
 
+import AirdropNft from '@/components/AirdropNft';
 import AirdropTokens from '@/components/AirdropTokens';
 import ComingSoon from '@/components/ComingSoon';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -49,7 +50,7 @@ export default function Sendy() {
                   <AirdropTokens />
                 </TabsContent>
                 <TabsContent value="nft">
-                  <ComingSoon />
+                  <AirdropNft />
                 </TabsContent>
               </Tabs>
             </motion.div>

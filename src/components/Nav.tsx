@@ -34,7 +34,7 @@ const navItems = [
     title: 'Airdrop',
     href: '/airdrop',
     visible: true,
-    comingSoon: true,
+    comingSoon: false,
   },
 ] as const;
 

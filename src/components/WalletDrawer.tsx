@@ -146,14 +146,7 @@ export const WalletCard = ({
     [address, rnsAddyEoa, rnsAddyFuturePass, type]
   );
 
-  const fullAddress = useMemo(
-    () =>
-      type === 'eoa' ? rnsAddyEoa ?? address : rnsAddyFuturePass ?? address,
-    [address, rnsAddyEoa, rnsAddyFuturePass, type]
-  );
-
-  // console.log('WD', balances, futurePassBalances);
-  // console.log('balancesToUse WD', balancesToUse);
+  const fullAddress = useMemo(() => address, [address]);
 
   return (
     <TooltipProvider>
@@ -182,8 +175,8 @@ export const WalletCard = ({
                   }}
                 />
               </div>
-              {((type === 'eoa' && rnsAddyEoa) ??
-                (type === 'futurePass' && rnsAddyFuturePass)) && (
+              {((type === 'eoa' && !!rnsAddress) ||
+                (type === 'futurePass' && !!rnsAddress)) && (
                 <div className="flex flex-row justify-start items-center leading-none opacity-40 text-sm">
                   {shortenAddress(address)}
                   <Copy
@@ -191,7 +184,7 @@ export const WalletCard = ({
                     className="ml-2 cursor-pointer"
                     onClick={(e: { stopPropagation: () => void }) => {
                       e.stopPropagation();
-                      copyText(rnsAddress ?? fullAddress);
+                      copyText(fullAddress);
                     }}
                   />
                 </div>

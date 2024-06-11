@@ -19,6 +19,7 @@ import type {
   SendyProps,
 } from '@/types';
 import { SendyTxStatus, SendyProcess, SendyTokenType } from '@/types';
+import { downloadCsv, downloadJson } from '@/utils';
 
 const SendyContext: React.Context<SendyProps> = createContext(
   {} as unknown as SendyProps
@@ -145,6 +146,22 @@ export const SendyProvider: React.FC<{
     [setAlertMessage, setAlertTitle, setOpenAlert]
   );
 
+  const handleDownloadCSV = useCallback(
+    (filename: string, nextStep: SendyProcess) => {
+      downloadCsv(downloadData, filename);
+      setCurrentSendyProcess(nextStep);
+    },
+    [downloadData, setCurrentSendyProcess]
+  );
+
+  const handleDownloadJSON = useCallback(
+    (filename: string, nextStep: SendyProcess) => {
+      downloadJson(downloadData, filename);
+      setCurrentSendyProcess(nextStep);
+    },
+    [downloadData, setCurrentSendyProcess]
+  );
+
   const resetSendyProvider = useCallback(async () => {
     setCurrentSendyProcess(SendyProcess.StageOne);
     setTokenType(SendyTokenType.NativeToken);
@@ -243,6 +260,8 @@ export const SendyProvider: React.FC<{
         addRecentlyUsedCollection,
         resetRecentlyUsedAddresses,
         resetRecentlyUsedCollections,
+        handleDownloadCSV,
+        handleDownloadJSON,
       }}
     >
       <>
