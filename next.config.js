@@ -18,6 +18,7 @@ const config = {
   experimental: {
     esmExternals: false,
   },
+  productionBrowserSourceMaps: true,
   options: {
     sourcemaps: 'production', // possible values can be production, development, or none
   },
