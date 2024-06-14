@@ -17,6 +17,7 @@ import '@therootnetwork/api-types';
 import { useNetworkSelector } from './NetworkSelectorProvider';
 import { Loader } from '@/components/Loader';
 import type { ApiProps } from '@/types';
+import { env } from '@/env';
 
 const ApiContext: React.Context<ApiProps> = createContext(
   {} as unknown as ApiProps
@@ -32,14 +33,14 @@ export function useTrnApi(): ApiProps {
 }
 
 let rootApi: ApiPromise;
-let porciniApi: ApiPromise;
 
 export { ApiPromise };
 
 export const TrnApiProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const { network } = useNetworkSelector();
+  // const { network } = useNetworkSelector();
+  const network = env.NEXT_PUBLIC_NETWORK;
 
   const [isApiConnected, setIsApiConnected] = useState(false);
   const [isApiDisconnected, setIsApiDisconnected] = useState(false);
@@ -52,7 +53,6 @@ export const TrnApiProvider: React.FC<{ children: ReactNode }> = ({
     () => ({
       currentNetwork: network,
       rootApi,
-      porciniApi,
       apiError,
       isApiConnected,
       isApiInitialized,
@@ -107,7 +107,6 @@ export const TrnApiProvider: React.FC<{ children: ReactNode }> = ({
 
     () => {
       if (rootApi.isConnected) void rootApi.disconnect();
-      // if (porciniApi.isConnected) void porciniApi.disconnect();
     };
   }, [createCallBack]);
 

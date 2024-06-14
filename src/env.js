@@ -34,7 +34,7 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().url().default('http://localhost:3000'),
     NEXT_PUBLIC_WALLET_CONNECT_ID: z.string(),
-    NEXT_PUBLIC_NETWORK: z.enum(['root', 'porcini']).default('porcini'),
+    NEXT_PUBLIC_NETWORK: z.enum(['root', 'porcini']),
     NEXT_PUBLIC_BATCH_SIZE: z.number().default(500),
     NEXT_PUBLIC_FPASS: z.string(),
     NEXT_PUBLIC_TIP_TOKEN_ADDRESS: z
