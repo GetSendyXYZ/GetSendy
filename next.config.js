@@ -18,6 +18,9 @@ const config = {
   experimental: {
     esmExternals: false,
   },
+  options: {
+    sourcemaps: 'production', // possible values can be production, development, or none
+  },
   async headers() {
     return [
       {
