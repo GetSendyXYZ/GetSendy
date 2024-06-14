@@ -22,7 +22,7 @@ import type {
 } from '@/types';
 import { SendyTxStatus, SendyProcess, SendyTokenType } from '@/types';
 import { downloadCsv, downloadJson } from '@/utils';
-import type { ApiPromise, useTrnApi } from './TrnApiProvider';
+import { type ApiPromise, useTrnApi } from './TrnApiProvider';
 
 const SendyContext: React.Context<SendyProps> = createContext(
   {} as unknown as SendyProps
