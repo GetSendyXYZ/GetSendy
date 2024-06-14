@@ -34,14 +34,14 @@ export const AppProviders = ({ children }: PropsWithChildren) => {
           <TXProvider>
             <SendyProvider>
               <WalletProvider>
-                <NetworkSelectorProvider>
-                  <AccountProvider>
-                    <MenuProvider>{children}</MenuProvider>
-                    <GasModal />
-                    <TxModal />
-                    <SignatureConfirmModal />
-                  </AccountProvider>
-                </NetworkSelectorProvider>
+                {/* <NetworkSelectorProvider> */}
+                <AccountProvider>
+                  <MenuProvider>{children}</MenuProvider>
+                  <GasModal />
+                  <TxModal />
+                  <SignatureConfirmModal />
+                </AccountProvider>
+                {/* </NetworkSelectorProvider> */}
               </WalletProvider>
             </SendyProvider>
           </TXProvider>
