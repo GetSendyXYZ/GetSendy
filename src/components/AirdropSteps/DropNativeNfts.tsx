@@ -114,6 +114,9 @@ export function DropNativeNfts() {
       const explainer = [];
       const downloadObjects = [];
 
+      const remarkExtrinsic = rootApi.tx.system.remark('Sent By GetSendy.xyz');
+      batchedTx.push(remarkExtrinsic);
+
       for (let i = 0; i < addressArray.length; i++) {
         const addressRow = addressArray[i];
         const address = addressRow?.split(',')[0]?.trim();
@@ -171,6 +174,9 @@ export function DropNativeNfts() {
   }, [
     bulkAddressList,
     BATCH_SIZE,
+    rootApi.tx.system,
+    rootApi.tx.balances,
+    rootApi.tx.assets,
     setDownloadData,
     setBatchedExtrinsics,
     setExplainers,
@@ -179,8 +185,6 @@ export function DropNativeNfts() {
     tokensWithBalances,
     selectedTokenId,
     selectedTokenSymbol,
-    rootApi.tx.assets,
-    rootApi.tx.balances,
   ]);
 
   return (

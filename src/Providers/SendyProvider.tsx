@@ -3,6 +3,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 
@@ -16,10 +17,12 @@ import type {
   DownloadData,
   ExtrinsicArray,
   OutputData,
+  Sendy,
   SendyProps,
 } from '@/types';
 import { SendyTxStatus, SendyProcess, SendyTokenType } from '@/types';
 import { downloadCsv, downloadJson } from '@/utils';
+import type { ApiPromise, useTrnApi } from './TrnApiProvider';
 
 const SendyContext: React.Context<SendyProps> = createContext(
   {} as unknown as SendyProps
@@ -80,6 +83,27 @@ export const SendyProvider: React.FC<{
 
   const [explainers, setExplainers] = useState<string[]>([]);
   const [batchedSendys, setBatchedSendys] = useState<BatchedSendys>([]);
+
+  const { rootApi } = useTrnApi();
+
+  useEffect(() => {
+    const addRemark = (rootApi: ApiPromise) => {
+      const extrinsic = rootApi.tx.system.remark('Sent By GetSendy.xyz');
+
+      const sendy: Sendy = {
+        addedId: batchedSendys.length + 1,
+        address: 'richierich.root',
+        extrinsic,
+        isRemark: true,
+      };
+
+      setBatchedSendys([...batchedSendys, sendy]);
+    };
+
+    if (batchedSendys.length === 0 && rootApi) {
+      addRemark(rootApi);
+    }
+  }, [batchedSendys, rootApi]);
 
   const [selectedPairs, setSelectedPairs] = useState<
     { collectionId: string; tokenId: number }[]

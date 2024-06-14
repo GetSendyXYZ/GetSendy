@@ -19,7 +19,7 @@ export default function Transactions() {
       values={batchedSendys}
       layoutScroll
       layout
-      className="select-none lg:overflow-y-auto lg:overflow-x-hidden lg:max-h-full max-h-none overflow-visible h-auto scroll-bar-gutter text-foreground"
+      className={`select-none lg:overflow-y-auto lg:overflow-x-hidden lg:max-h-full max-h-none overflow-visible h-auto scroll-bar-gutter text-foreground`}
       layoutId="tx-transactions"
       key="tx-transactions"
     >
@@ -60,7 +60,7 @@ const Item = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="cursor-pointer relative text-foreground"
+      className={`cursor-pointer relative text-foreground ${sendy.isRemark ? 'hidden' : ''}`}
       dragElastic={3}
       style={{ boxShadow }}
       dragListener={false}

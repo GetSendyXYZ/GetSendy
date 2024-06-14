@@ -71,6 +71,7 @@ export type Sendy = {
   assetId?: number;
   amountToSend?: number;
   isTip?: boolean;
+  isRemark?: boolean;
 };
 
 export type SendyArray = Array<Sendy>;

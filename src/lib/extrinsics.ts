@@ -110,6 +110,22 @@ export const getSftCollectionInfo = async ({
   return data.toJSON();
 };
 
+export const getSftCollectionTokens = async ({
+  rootApi,
+  collectionId,
+  address,
+}: {
+  rootApi: ApiPromise;
+  collectionId: number;
+  address: string;
+}) => {
+  const data = await getSftCollectionInfo({ rootApi, collectionId });
+
+  console.log(data);
+
+  return data;
+};
+
 export const getSftTokenInfo = async ({
   rootApi,
   collectionId,
