@@ -46,30 +46,32 @@ export default function Nav({ mobile = false }) {
       <NavigationMenuList
         className={`flex ${mobile ? 'flex-col items-end mb-4' : 'flex-row'}  gap-4 text-primary dark:text-sendy text-opacity-80 mr-2`}
       >
-        {navItems.map(item => (
-          <NavigationMenuItem key={item.title}>
-            <Link
-              href={item.href}
-              legacyBehavior
-              passHref
-              onClick={() => setMenuOpen(false)}
-            >
-              <NavigationMenuLink
-                className={`uppercase ${mobile ? 'text-lg' : 'text-xs'} ${item.comingSoon ? 'cursor-not-allowed opacity-20' : 'hover:opacity-40'} tracking-wider  transition-all duration-300 font-bold `}
-                onClick={e => {
-                  if (!item.comingSoon) {
-                    setMenuOpen(false);
-                  } else {
-                    e.preventDefault();
-                    setMenuOpen(false);
-                  }
-                }}
+        {navItems
+          .filter(i => i.visible)
+          .map(item => (
+            <NavigationMenuItem key={item.title}>
+              <Link
+                href={item.href}
+                legacyBehavior
+                passHref
+                onClick={() => setMenuOpen(false)}
               >
-                {item.title}
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        ))}
+                <NavigationMenuLink
+                  className={`uppercase ${mobile ? 'text-lg' : 'text-xs'} ${item.comingSoon ? 'cursor-not-allowed opacity-20' : 'hover:opacity-40'} tracking-wider  transition-all duration-300 font-bold `}
+                  onClick={e => {
+                    if (!item.comingSoon) {
+                      setMenuOpen(false);
+                    } else {
+                      e.preventDefault();
+                      setMenuOpen(false);
+                    }
+                  }}
+                >
+                  {item.title}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          ))}
       </NavigationMenuList>
     </NavigationMenu>
   );
