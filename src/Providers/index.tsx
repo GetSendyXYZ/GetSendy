@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, type PropsWithChildren } from 'react';
+import React, { Suspense, type PropsWithChildren } from 'react';
 
 import { TrnApiProvider } from './TrnApiProvider';
 import { AccountProvider } from './AccountProvider';

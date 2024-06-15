@@ -14,7 +14,6 @@ import React, {
 
 import '@therootnetwork/api-types';
 
-import { useNetworkSelector } from './NetworkSelectorProvider';
 import { Loader } from '@/components/Loader';
 import type { ApiProps } from '@/types';
 import { env } from '@/env';

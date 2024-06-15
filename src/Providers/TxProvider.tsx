@@ -116,6 +116,7 @@ export const TXProvider: React.FC<{
       toast.dismiss(toastId);
       toast.error('Transaction failed');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [txStatus]);
 
   return (
