@@ -1,7 +1,6 @@
 'use client';
-import type { PropsWithChildren } from 'react';
+import { Suspense, type PropsWithChildren } from 'react';
 
-import { NetworkSelectorProvider } from './NetworkSelectorProvider';
 import { TrnApiProvider } from './TrnApiProvider';
 import { AccountProvider } from './AccountProvider';
 import { WalletProvider } from './WalletProvider';
@@ -15,6 +14,15 @@ import TxModal from '@/components/TxModal';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import FuturePassProvider from './FuturePassProvider';
+import { env } from '@/env';
+
+const ReactQueryDevtoolsProduction = React.lazy(() =>
+  import('@tanstack/react-query-devtools/production').then(d => ({
+    default: d.ReactQueryDevtools,
+  }))
+);
+
+const showDevtools = env.NEXT_PUBLIC_SHOW_DEVTOOLS;
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -48,6 +56,11 @@ export const AppProviders = ({ children }: PropsWithChildren) => {
         </TrnApiProvider>
       </FuturePassProvider>
       <ReactQueryDevtools initialIsOpen={false} />
+      {showDevtools ? (
+        <Suspense fallback={null}>
+          <ReactQueryDevtoolsProduction />
+        </Suspense>
+      ) : null}
     </QueryClientProvider>
   );
 };
