@@ -19,9 +19,6 @@ const config = {
     esmExternals: false,
   },
   productionBrowserSourceMaps: true,
-  options: {
-    sourcemaps: 'production', // possible values can be production, development, or none
-  },
   async headers() {
     return [
       {
