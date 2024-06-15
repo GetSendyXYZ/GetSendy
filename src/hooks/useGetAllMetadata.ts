@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useNetworkSelector } from '@/Providers/NetworkSelectorProvider';
+import { env } from '@/env';
 import { getTokenMetadata } from '@/lib/extrinsics';
 import { type ApiPromise } from '@polkadot/api';
 import type { ITokensToCheck } from '@/types';
@@ -9,7 +9,7 @@ const useGetAllMetadata = (
   address: string,
   tokens: ITokensToCheck
 ) => {
-  const { network } = useNetworkSelector();
+  const network = env.NEXT_PUBLIC_NETWORK;
 
   if (!rootApi) {
     throw new Error('TRN API is not initialised');
