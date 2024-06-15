@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useNetworkSelector } from '@/Providers/NetworkSelectorProvider';
+import { env } from '@/env';
 import { getBalances } from '@/lib/extrinsics';
 import { useGetAllTokens } from './useGetAllTokens';
 import useGetAllMetadata from './useGetAllMetadata';
@@ -9,7 +9,7 @@ import type { ApiPromise } from '@polkadot/api';
 import type { ITokens } from '@/types';
 
 const useGetAllBalances = (rootApi: ApiPromise | null, address: string) => {
-  const { network } = useNetworkSelector();
+  const network = env.NEXT_PUBLIC_NETWORK;
 
   if (!rootApi) {
     throw new Error('TRN API is not initialised');

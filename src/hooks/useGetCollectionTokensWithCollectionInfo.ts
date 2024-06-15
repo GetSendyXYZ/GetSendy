@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { getCollectionInfo, getCollectionTokens } from '@/lib/extrinsics';
-import { useNetworkSelector } from '@/Providers/NetworkSelectorProvider';
+import { env } from '@/env';
 
 import type { ApiPromise } from '@polkadot/api';
 import { useQuery } from '@tanstack/react-query';
@@ -17,7 +17,7 @@ export const useGetCollectionTokensWithCollectionInfo = (
   collectionId: string,
   address: string
 ) => {
-  const { network } = useNetworkSelector();
+  const network = env.NEXT_PUBLIC_NETWORK;
   if (!rootApi) {
     throw new Error('TRN API is not initialised');
   }

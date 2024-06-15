@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { useSendyProvider } from '@/Providers/SendyProvider';
 import { shortenAddress } from '@/utils';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import TransferToken from './assets/Transfer';
 import TransferNft from './nft/Transfer';
 import { AnimatePresence, type DragControls, motion } from 'framer-motion';

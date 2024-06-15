@@ -25,7 +25,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 import { useAccountProvider } from '@/Providers/AccountProvider';
 import { useWalletProvider } from '@/Providers/WalletProvider';
-import { useNetworkSelector } from '@/Providers/NetworkSelectorProvider';
+
 import useCopy from '@/hooks/useCopy';
 import React, { useMemo } from 'react';
 import Image from 'next/image';
@@ -33,9 +33,10 @@ import { useSendyProvider } from '@/Providers/SendyProvider';
 import type { ITokenWithBalance } from '@/types';
 import { shortenAddress } from '@/utils';
 import { useRnsResolveAddress } from '@/hooks/useRns';
+import { env } from '@/env';
 
 export const WalletDrawer = () => {
-  const { network } = useNetworkSelector();
+  const network = env.NEXT_PUBLIC_NETWORK;
   const { address } = useAccount();
   const { futurePass, activeAccount } = useAccountProvider();
   const { handleSignOut } = useWalletProvider();

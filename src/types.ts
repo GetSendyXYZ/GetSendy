@@ -2,7 +2,6 @@ import { type SubmittableExtrinsic } from '@polkadot/api/types';
 import { type ISubmittableResult } from '@polkadot/types/types';
 import type { ApiPromise } from '@polkadot/api/promise';
 import type { NetworkName } from '@therootnetwork/api';
-import { Metadata } from '@futureverse/react';
 
 export type Extrinsic = SubmittableExtrinsic<'promise', ISubmittableResult>;
 export type ExtrinsicArray = Array<Extrinsic>;

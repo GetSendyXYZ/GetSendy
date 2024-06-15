@@ -14,7 +14,6 @@ import React, {
 
 import '@therootnetwork/api-types';
 
-import { useNetworkSelector } from './NetworkSelectorProvider';
 import { Loader } from '@/components/Loader';
 import type { ApiProps } from '@/types';
 import { env } from '@/env';
@@ -39,7 +38,7 @@ export { ApiPromise };
 export const TrnApiProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  // const { network } = useNetworkSelector();
+  // const network = env.NEXT_PUBLIC_NETWORK;
   const network = env.NEXT_PUBLIC_NETWORK;
 
   const [isApiConnected, setIsApiConnected] = useState(false);

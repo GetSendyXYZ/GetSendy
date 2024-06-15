@@ -18,6 +18,7 @@ const config = {
   experimental: {
     esmExternals: false,
   },
+  productionBrowserSourceMaps: env.env.NEXT_PUBLIC_NETWORK === 'porcini',
   async headers() {
     return [
       {

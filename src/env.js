@@ -37,6 +37,7 @@ export const env = createEnv({
     NEXT_PUBLIC_NETWORK: z.enum(['root', 'porcini']),
     NEXT_PUBLIC_BATCH_SIZE: z.number().default(500),
     NEXT_PUBLIC_FPASS: z.string(),
+    NEXT_PUBLIC_SHOW_DEVTOOLS: z.boolean().default(false),
     NEXT_PUBLIC_TIP_TOKEN_ADDRESS: z
       .string()
       .default('0x4dFDCA75697A079a107b9F23DE6FCB766cDAa609'),
@@ -54,6 +55,9 @@ export const env = createEnv({
     NEXT_PUBLIC_BASE_URL:
       process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000',
     NEXT_PUBLIC_WALLET_CONNECT_ID: process.env.NEXT_PUBLIC_WALLET_CONNECT_ID,
+    NEXT_PUBLIC_SHOW_DEVTOOLS: process.env.NEXT_PUBLIC_SHOW_DEVTOOLS
+      ? process.env.NEXT_PUBLIC_SHOW_DEVTOOLS === 'true'
+      : false,
     NEXT_PUBLIC_NETWORK: process.env.NEXT_PUBLIC_NETWORK,
     NEXT_PUBLIC_BATCH_SIZE: process.env.NEXT_PUBLIC_BATCH_SIZE
       ? Number(process.env.NEXT_PUBLIC_BATCH_SIZE)
