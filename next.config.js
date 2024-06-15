@@ -18,6 +18,7 @@ const config = {
   experimental: {
     esmExternals: false,
   },
+  productionBrowserSourceMaps: true,
   async headers() {
     return [
       {
