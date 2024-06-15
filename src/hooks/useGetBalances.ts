@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import type { ApiPromise } from '@polkadot/api';
-import { useNetworkSelector } from '@/Providers/NetworkSelectorProvider';
+import { env } from '@/env';
 
 import { getBalances } from '@/lib/extrinsics';
 
 const useGetBalances = (rootApi: ApiPromise | null, address: string | null) => {
-  const { network } = useNetworkSelector();
+  const network = env.NEXT_PUBLIC_NETWORK;
 
   return useQuery({
     queryKey: ['balances', `${address}-${network}`, network],

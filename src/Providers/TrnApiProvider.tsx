@@ -38,7 +38,7 @@ export { ApiPromise };
 export const TrnApiProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  // const { network } = useNetworkSelector();
+  // const network = env.NEXT_PUBLIC_NETWORK;
   const network = env.NEXT_PUBLIC_NETWORK;
 
   const [isApiConnected, setIsApiConnected] = useState(false);
