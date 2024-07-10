@@ -255,5 +255,21 @@ export const commonCollections: ICommonCollections = {
       collectionId: 353380,
       collectionName: 'NFT_6',
     },
+    {
+      collectionId: 669796,
+      collectionName: 'Sendy Tester',
+    },
+    {
+      collectionId: 671844,
+      collectionName: 'Zerpmoncini',
+    },
+    {
+      collectionId: 659556,
+      collectionName: 'Porcini Seekers',
+    },
+    {
+      collectionId: 665700,
+      collectionName: 'Porcini Punks',
+    },
   ],
 };
