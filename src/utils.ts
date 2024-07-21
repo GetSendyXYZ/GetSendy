@@ -147,11 +147,27 @@ export const commonCollections: ICommonCollections = {
     },
     {
       collectionId: 8292,
-      collectionName: 'Tempus - Book 1 - 1st Edition',
+      collectionName: 'MoM: The Aberrant Spark (1st Edition)',
     },
     {
       collectionId: 9316,
-      collectionName: 'Tempus - Book 1 - 2nd Edition',
+      collectionName: 'MoM: The Aberrant Spark (2nd Edition)',
+    },
+    {
+      collectionId: 11364,
+      collectionName: 'FIFA AI League -  Wearable 1',
+    },
+    {
+      collectionId: 13412,
+      collectionName: 'FIFA AI League -  Wearable 2',
+    },
+    {
+      collectionId: 14436,
+      collectionName: 'FIFA AI League -  Wearable 3',
+    },
+    {
+      collectionId: 15460,
+      collectionName: 'FIFA AI League -  Wearable 4',
     },
     {
       collectionId: 10340,
@@ -212,6 +228,50 @@ export const commonCollections: ICommonCollections = {
     {
       collectionId: 47204,
       collectionName: 'The Third Kingdom: SurrealScapes',
+    },
+    {
+      collectionId: 48228,
+      collectionName: 'RootGamesRewards',
+    },
+    {
+      collectionId: 49252,
+      collectionName: 'RootGamesCrowdsaleRewards',
+    },
+    {
+      collectionId: 50276,
+      collectionName: 'Reebok Impact',
+    },
+    {
+      collectionId: 51300,
+      collectionName: 'MoM: Age of the Starstone (1st Edition)',
+    },
+    {
+      collectionId: 52324,
+      collectionName: 'MoM: Age of the Starstone (2nd Edition)',
+    },
+    {
+      collectionId: 53348,
+      collectionName: 'PorkJet',
+    },
+    {
+      collectionId: 54372,
+      collectionName: 'Root Punks',
+    },
+    {
+      collectionId: 55396,
+      collectionName: 'JENUINE',
+    },
+    {
+      collectionId: 56420,
+      collectionName: 'JC',
+    },
+    {
+      collectionId: 59492,
+      collectionName: 'ABCol',
+    },
+    {
+      collectionId: 60516,
+      collectionName: 'RCADIA Genesis Pass',
     },
   ],
   porcini: [
